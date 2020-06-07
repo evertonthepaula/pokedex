@@ -16,6 +16,8 @@ export const Container = styled.div`
   );
   box-sizing: border-box;
   cursor: pointer;
+  box-shadow: ${(props) =>
+    props.color ? `10px 28px 33px -29px var(--color-${props.color})` : 'none'};
 `;
 
 export const Cover = styled.img`
@@ -35,9 +37,8 @@ export const Name = styled.h3`
 export const IdNumber = styled.span`
   font-style: normal;
   font-weight: 700;
-  font-size: 12px;
-  line-height: 14px;
-
+  font-size: 1.6rem;
+  line-height: 1.4rem;
   color: rgba(23, 23, 27, 0.6);
 `;
 

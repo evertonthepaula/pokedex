@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -5,7 +6,19 @@ import history from '../../services/history';
 
 import Loading from '../../components/Loading';
 
-import { Container, Header, Back, Tag, Icon, Info } from './styles';
+import {
+  Container,
+  Header,
+  Back,
+  Image,
+  IdNumber,
+  Name,
+  Tag,
+  Icon,
+  Info,
+  Subtitle,
+  DefinitionList,
+} from './styles';
 
 function PokemonPage({
   match: {
@@ -33,18 +46,16 @@ function PokemonPage({
           <Header>
             <Back onClick={() => history.goBack()} />
 
-            <span>
-              <img
-                src={`https://pokeres.bastionbot.org/images/pokemon/${pokemon.id}.png`}
-                width="130"
-                height="130"
-                alt={pokemon.name}
-              />
-            </span>
+            <Image
+              src={`https://pokeres.bastionbot.org/images/pokemon/${pokemon.id}.png`}
+              width="130"
+              height="130"
+              alt={pokemon.name}
+            />
 
             <div>
-              <span>#{pokemon.id}</span>
-              <h1>{pokemon.name}</h1>
+              <IdNumber>#{pokemon.id}</IdNumber>
+              <Name>{pokemon.name}</Name>
 
               {pokemon.types.map((item) => (
                 <Tag key={item.type.name} color={item.type.name}>
@@ -56,14 +67,42 @@ function PokemonPage({
           </Header>
 
           <Info>
-            {pokemon.abilities.map(({ ability }) => (
-              <p>Abilities: {ability.name}</p>
-            ))}
-            {pokemon.stats.map((item) => (
-              <p>
-                <b>{item.stat.name}</b>: {item.base_stat}
-              </p>
-            ))}
+            <Subtitle color={colorType}>Pokédex Data</Subtitle>
+
+            <DefinitionList>
+              <dt>Species</dt>
+              <dd> Empty </dd>
+              <dt>Height</dt>
+              <dd>{(pokemon.height * 0.1).toFixed(2)}m</dd>
+              <dt>Weight</dt>
+              <dd>{(pokemon.weight * 0.1).toFixed(1)}Kg</dd>
+              <dt>Abilities</dt>
+              <dd>
+                {pokemon.abilities.map(({ ability, is_hidden }) => (
+                  <>
+                    {ability.name} {is_hidden && '(Hidden Ability)'} <br />
+                  </>
+                ))}
+              </dd>
+            </DefinitionList>
+
+            <Subtitle color={colorType}>Training</Subtitle>
+
+            <DefinitionList>
+              <dt>Base Exp</dt>
+              <dd>{pokemon.base_experience}</dd>
+            </DefinitionList>
+
+            <Subtitle color={colorType}>Base Stats</Subtitle>
+
+            <DefinitionList>
+              {pokemon.stats.map((item) => (
+                <>
+                  <dt>{item.stat.name}</dt>
+                  <dd>{item.base_stat}</dd>
+                </>
+              ))}
+            </DefinitionList>
           </Info>
         </>
       )}

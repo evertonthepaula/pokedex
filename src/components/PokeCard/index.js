@@ -18,8 +18,7 @@ function PokeCard({ pokemon }) {
         <Name>{pokemon.name}</Name>
 
         {pokemon.types.map((item) => (
-          <Tag color={item.type.name}>
-            {' '}
+          <Tag key={item.type.name} color={item.type.name}>
             <Icon className={`bg-${item.type.name}`} /> {item.type.name}
           </Tag>
         ))}
@@ -41,7 +40,7 @@ PokeCard.propTypes = {
   pokemon: PropTypes.shape({
     types: PropTypes.array.isRequired,
     name: PropTypes.string.isRequired,
-    id: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
   }).isRequired,
 };
 
