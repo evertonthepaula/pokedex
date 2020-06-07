@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { AiOutlineArrowLeft } from 'react-icons/ai';
+
 import sprites from '../../assets/img/icons/sprites-type.png';
 
 export const Container = styled.div`
@@ -15,6 +17,12 @@ export const Header = styled.header`
   align-items: center;
   padding: 25px;
   min-height: 400px;
+`;
+
+export const Back = styled(AiOutlineArrowLeft)`
+  font-size: 4rem;
+  color: #fff;
+  cursor: pointer;
 `;
 
 export const Info = styled.header`

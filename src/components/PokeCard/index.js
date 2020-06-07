@@ -14,6 +14,7 @@ function PokeCard({ pokemon }) {
     <Container onClick={linkTo} color={colorType}>
       <div>
         <IdNumber>#{pokemon.id}</IdNumber>
+
         <Name>{pokemon.name}</Name>
 
         {pokemon.types.map((item) => (

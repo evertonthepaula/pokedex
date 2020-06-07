@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
+import history from '../../services/history';
 
 import Loading from '../../components/Loading';
 
-import { Container, Header, Tag, Icon, Info } from './styles';
+import { Container, Header, Back, Tag, Icon, Info } from './styles';
 
 function PokemonPage({
   match: {
@@ -21,7 +22,7 @@ function PokemonPage({
     setColorType(poke.types[0].type.name);
     setPokemon(poke);
     setLoad(false);
-  }, [id]);
+  }, [id, pokemons]);
 
   return (
     <Container color={colorType}>
@@ -30,6 +31,8 @@ function PokemonPage({
       {pokemon && (
         <>
           <Header>
+            <Back onClick={() => history.goBack()} />
+
             <span>
               <img
                 src={`https://pokeres.bastionbot.org/images/pokemon/${pokemon.id}.png`}
