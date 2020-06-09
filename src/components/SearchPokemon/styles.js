@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components';
 
+import searchIcon from '../../assets/img/icons/search.png';
+
 const status = {
   default: css`
     border-color: var(--color-snow);
@@ -27,11 +29,12 @@ const status = {
 export const Input = styled.input`
   width: 100%;
   height: 60px;
-  padding: 0 4px;
+  padding: 0 4px 0 50px;
   position: relative;
   border: 1px solid transparent;
   border-radius: var(--border-radius);
-  background-color: var(--color-snow);
+  background: url(${searchIcon}) no-repeat var(--color-snow);
+  background-position: 20px;
   font-size: 1.6rem;
   text-transform: lowercase;
 

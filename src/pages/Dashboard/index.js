@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import Loading from '../../components/Loading';
-
-import EmptyResult from '../../components/EmptyResult';
 import SearchPokemon from '../../components/SearchPokemon';
+import EmptyResult from '../../components/EmptyResult';
 import PokeCard from '../../components/PokeCard';
+import Loading from '../../components/Loading';
+import Menu from '../../components/Menu';
 
 import { pokemonsRequest } from '../../store/modules/pokemons/actions';
 
@@ -23,8 +23,8 @@ export default function Dashboard() {
   return (
     <Container>
       <Header>
+        <Menu />
         <Title>POKÉDEX</Title>
-
         <SearchPokemon />
       </Header>
 

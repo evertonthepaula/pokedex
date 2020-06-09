@@ -1,10 +1,13 @@
 import styled from 'styled-components';
 
+import pokeball from '../../assets/img/pokeball-half.png';
+
 export const Container = styled.div`
   width: 100%;
   max-width: 1240px;
   margin: 0 auto;
   padding: 8px;
+  background: url(${pokeball}) center top no-repeat;
 `;
 
 export const Header = styled.header`

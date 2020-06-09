@@ -16,6 +16,7 @@ export default css`
     -webkit-text-size-adjust: 100%;
     font-size: 62.5%;
     font-family: 'PT Sans', sans-serif;
+    scroll-behavior: smooth;
   }
   body {
     margin: 0;

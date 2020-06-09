@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import history from '../../services/history';
 
@@ -44,4 +44,4 @@ PokeCard.propTypes = {
   }).isRequired,
 };
 
-export default PokeCard;
+export default memo(PokeCard);

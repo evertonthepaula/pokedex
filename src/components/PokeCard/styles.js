@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 import sprites from '../../assets/img/icons/sprites-type.png';
+import pokeball from '../../assets/img/Pokeball-transparent.png';
+import cardBackground from '../../assets/img/card-background.png';
 
 export const Container = styled.div`
   display: flex;
@@ -10,6 +12,10 @@ export const Container = styled.div`
   margin: 20px;
   padding: 20px;
   border-radius: var(--border-radius);
+  background-image: url(${pokeball}), url(${cardBackground});
+  background-position: center right, 92px 5px;
+  background-repeat: no-repeat, no-repeat;
+  background-size: 145px, 74px;
   background-color: var(
     ${(props) =>
       props.color ? `--color-${props.color}-background` : 'transparent'}
