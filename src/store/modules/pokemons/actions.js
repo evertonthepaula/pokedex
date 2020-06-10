@@ -5,10 +5,10 @@ export function pokemonsRequest(params = {}) {
   };
 }
 
-export function pokemonsLoadSuccess({ pokemons }) {
+export function pokemonsLoadSuccess({ pokemons, source = null }) {
   return {
     type: '@pokemons/POKEMONS_LOAD_SUCCESS',
-    payload: { pokemons },
+    payload: { pokemons, source },
   };
 }
 

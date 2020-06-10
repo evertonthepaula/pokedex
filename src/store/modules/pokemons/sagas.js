@@ -1,4 +1,4 @@
-import { takeLatest, call, put, all } from 'redux-saga/effects';
+import { takeLatest, call, put, all, select } from 'redux-saga/effects';
 import { toast } from 'react-toastify';
 
 import { pokemonsLoadSuccess, pokemonsLoadFailure } from './actions';
@@ -7,7 +7,13 @@ import ServicePokemons from '../../../services/pokeapi/pokemon';
 // eslint-disable-next-line consistent-return
 export function* load({ payload }) {
   try {
+    const holdState = yield select();
     const { params } = payload;
+
+    if (JSON.stringify(params) === JSON.stringify(holdState.pokemons.source)) {
+      yield put(pokemonsLoadFailure());
+      return false;
+    }
 
     const response = yield call(ServicePokemons.get, { params });
 
@@ -17,7 +23,7 @@ export function* load({ payload }) {
 
     const pokemons = yield all(promises);
 
-    yield put(pokemonsLoadSuccess({ pokemons }));
+    yield put(pokemonsLoadSuccess({ pokemons, source: params }));
   } catch (err) {
     toast.error('Falha na busca dos dados!');
     yield put(pokemonsLoadFailure());

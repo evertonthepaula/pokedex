@@ -2,9 +2,9 @@
 import produce from 'immer';
 
 const INITIAL_STATE = {
-  pokemons: [],
-  source: null,
   loading: false,
+  source: null,
+  pokemons: [],
 };
 
 export default function pokemons(state = INITIAL_STATE, action) {
@@ -17,6 +17,7 @@ export default function pokemons(state = INITIAL_STATE, action) {
 
       case '@pokemons/POKEMONS_LOAD_SUCCESS': {
         draft.pokemons = action.payload.pokemons;
+        draft.source = action.payload.source;
         draft.loading = false;
         break;
       }
