@@ -2,7 +2,10 @@ import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import history from '../../services/history';
 
-import { Container, Cover, Name, IdNumber, Tag, Icon } from './styles';
+import Tag from '../../styles/components/tag';
+import TypesIcon from '../../styles/components/typesIcon';
+
+import { Container, Cover, Name, IdNumber } from './styles';
 
 function PokeCard({ pokemon }) {
   const colorType = pokemon.types[0].type.name;
@@ -19,7 +22,7 @@ function PokeCard({ pokemon }) {
 
         {pokemon.types.map((item) => (
           <Tag key={item.type.name} color={item.type.name}>
-            <Icon className={`bg-${item.type.name}`} /> {item.type.name}
+            <TypesIcon className={`-${item.type.name}`} /> {item.type.name}
           </Tag>
         ))}
       </div>

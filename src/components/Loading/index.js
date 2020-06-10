@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Dots from '../Dots';
+import { Dots, Buble } from '../../styles/components/dots';
 import { Container, Image, Info } from './styles';
 
 export default function Loading() {
@@ -8,7 +8,12 @@ export default function Loading() {
     <Container>
       <Image />
       <Info>
-        Buscando <Dots />
+        Buscando{' '}
+        <Dots>
+          <Buble />
+          <Buble />
+          <Buble />
+        </Dots>
       </Info>
     </Container>
   );

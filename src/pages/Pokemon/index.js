@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 import history from '../../services/history';
 
 import Loading from '../../components/Loading';
+import Tag from '../../styles/components/tag';
+import TypesIcon from '../../styles/components/typesIcon';
 
 import {
   Container,
@@ -13,8 +15,6 @@ import {
   Image,
   IdNumber,
   Name,
-  Tag,
-  Icon,
   Info,
   Subtitle,
   DefinitionList,
@@ -32,8 +32,8 @@ function PokemonPage({
 
   useEffect(() => {
     const poke = pokemons.find((element) => element.id === Number(id));
-    setColorType(poke.types[0].type.name);
     setPokemon(poke);
+    setColorType(poke.types[0].type.name);
     setLoad(false);
   }, [id, pokemons]);
 
@@ -55,12 +55,13 @@ function PokemonPage({
 
             <div>
               <IdNumber>#{pokemon.id}</IdNumber>
+
               <Name>{pokemon.name}</Name>
 
               {pokemon.types.map((item) => (
                 <Tag key={item.type.name} color={item.type.name}>
-                  {' '}
-                  <Icon className={`bg-${item.type.name}`} /> {item.type.name}
+                  <TypesIcon className={`bg-${item.type.name}`} />
+                  {item.type.name}
                 </Tag>
               ))}
             </div>
